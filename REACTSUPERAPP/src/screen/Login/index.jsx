@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./index.css";
+import image from '../../assets/soft.jpg'
 
 export const Login = () => {
     const [formData, setFormData] = useState({
@@ -69,12 +70,15 @@ export const Login = () => {
 
 
     return <div className="login-container">
-        <div style={{ width:"50vw", height:"100vh"}}></div>
+
+    <div>
+    <img src={image} width={600} />
+    </div>
         <form className="login-form">
             <h1>Fun Desk</h1>
 
-            <input type="text" placeholder="Name" name="name" 
-            style={{border: errTxt.name.isError ? "1px solid red" : "1px solid black"}}
+            <input className="log-in" type="text" placeholder="Name" name="name" 
+            style={{border: errTxt.name.isError ? "1px solid black" : "1px solid red"}}
             value={formData.name}
             onChange={handleChange}
              />
@@ -82,39 +86,41 @@ export const Login = () => {
                 <p style={{ color:"red" }}>{errTxt.name.msg}</p>
              )}
 
-             <input type="text" placeholder="Username" name="username"
+             <input className="log-in" type="text" placeholder="Username" name="username"
              value={formData.username}
             onChange={handleChange} />
             {errTxt.username.isError && 
             <p>{ettTxt.username.msg}</p>}
 
 
-            <input type="text" placeholder="Email" name="email" 
+            <input className="log-in" type="text" placeholder="Email" name="email" 
             value={formData.email}
             onChange={handleChange} />
             {errTxt.email.isError && <p>{errTxt.email.msg}</p>}
 
 
-            <input type="tel" placeholder="Mobile" name="mobile"
+            <input className="log-in" type="tel" placeholder="Mobile" name="mobile"
             value={formData.mobile}
             onChange={handleChange} />
             {errTxt.mobile.isError && <p>{errTxt.mobile.msg}</p>}
 
-            <div>
+            <div className="che-lab">
+
                 <input id="checkbox" type="checkbox"
                 name="isChecked" value={formData.isChecked}
                 onChange={(e) => 
                     setFormData({...formData, isChecked: e.target.checked })
                 } />
 
-                <label htmlFor="checkbox">
-                    share my registartion data with Fun desk
+                <label htmlFor="checkbox">share my registartion data with Fun desk
                 </label>
 
                 <br />
                 {errTxt.isChecked.isError && <p>{errTxt.isChecked.msg}</p>}
             </div>
-            <button type="submit">Sign Up</button>
+            <button type="submit">SIGN UP</button>
+
+            <p></p>
         </form>
     </div>
 };
